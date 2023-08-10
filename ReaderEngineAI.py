@@ -49,14 +49,14 @@ class ChatGPTInterface:
         ]
 
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4",
             messages=messages
         )
 
         return response.choices[0].message['content']
 
 def get_api_key():
-    openai_key = "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"  # Your OpenAI Key!
+    openai_key = ""  # Your OpenAI Key!
     return openai_key
 
 def export_to_docx():
