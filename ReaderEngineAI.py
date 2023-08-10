@@ -134,6 +134,7 @@ project_manager_label = tk.Label(root, text="PRODUCT MANAGER: DAVIS BOUDREAU")
 copyright_label = tk.Label(root, text="© 2023 NSCC - NOVA SCOTIA COMMUNITY COLLEGE")
 logo_image = ImageTk.PhotoImage(resized_image)
 logo_label = tk.Label(root, image=logo_image)
+
 # Layout GUI components
 choose_pdf_button.pack(pady=10)
 export_button.pack(pady=10)
