@@ -90,13 +90,13 @@ def show_loading_prompt():
     return loading_window
 
 def process_pdf_and_generate_response():
-    global selected_pdf_filename  # 引入全局变量
+    global selected_pdf_filename
     pdf_file_path = filedialog.askopenfilename(filetypes=[("PDF files", "*.pdf")])
 
     if pdf_file_path:
         selected_pdf_filename = os.path.basename(pdf_file_path)
         selected_pdf_filename = selected_pdf_filename.split('_')[0]
-        loading_window = show_loading_prompt()  # 显示加载提示窗口
+        loading_window = show_loading_prompt()  # Show loading screen
 
         api_key = get_api_key()
         pdf_processor = PDFProcessor()
@@ -111,21 +111,21 @@ def process_pdf_and_generate_response():
         response_text.insert(tk.END, response)
         response_text.config(state=tk.DISABLED)
 
-        loading_window.destroy()  # 关闭加载提示窗口
+        loading_window.destroy()  # Kill loading screen!
 
 def process_pdf_and_generate_response_with_loading():
     loading_thread = threading.Thread(target=process_pdf_and_generate_response)
     loading_thread.start()
 
-# 创建GUI窗口
+# Create GUI window
 root = tk.Tk()
 root.title("ReaderEngineAI - Beta V0.01")
 root.iconphoto(True, tk.PhotoImage(file=resource_path('icon.png')))
 original_image = Image.open(resource_path('nscc_sa.png'))
-resized_image = original_image.resize((128, 128))  # 将width和height替换为您想要的尺寸
+resized_image = original_image.resize((128, 128))
 
 
-# 创建GUI组件
+# Create GUI components
 choose_pdf_button = tk.Button(root, text="Select a PDF file", command=process_pdf_and_generate_response_with_loading)
 export_button = tk.Button(root, text="Export the result as docx", command=export_to_docx)
 response_text = tk.Text(root, wrap=tk.WORD, state=tk.DISABLED)
@@ -134,7 +134,7 @@ project_manager_label = tk.Label(root, text="PRODUCT MANAGER: DAVIS BOUDREAU")
 copyright_label = tk.Label(root, text="© 2023 NSCC - NOVA SCOTIA COMMUNITY COLLEGE")
 logo_image = ImageTk.PhotoImage(resized_image)
 logo_label = tk.Label(root, image=logo_image)
-# 布局GUI组件
+# Layout GUI components
 choose_pdf_button.pack(pady=10)
 export_button.pack(pady=10)
 response_text.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
@@ -143,5 +143,5 @@ project_manager_label.pack(side="bottom", anchor="se", padx=10)
 copyright_label.pack(side="bottom", anchor="se", padx=10, pady=10)
 logo_label.pack(side="bottom", anchor="sw")
 
-# 运行GUI主循环
+# GUI Main Loop
 root.mainloop()
