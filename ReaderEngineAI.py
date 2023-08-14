@@ -44,19 +44,19 @@ class ChatGPTInterface:
 
     def generate_response(self, input_text):
         messages = [
-            {"role": "system", "content": "An experienced lesson planner"},
-            {"role": "user", "content": "Extract Course name and outcomes. Propose and analyze objectives professionally with pros and cons. Create optimal instructional program. \n" + input_text}
+            {"role": "system", "content": "College instructor"},
+            {"role": "user", "content": "Extract course title, analyze teaching objectives, provide detailed lesson planning, offer specific advice to engage students and enhance course learning experience, while ensuring a beginner-friendly teaching difficulty level.\n" + input_text}
         ]
 
         response = openai.ChatCompletion.create(
-            model="gpt-4",
+            model="gpt-3.5-turbo-16k",
             messages=messages
         )
 
         return response.choices[0].message['content']
 
 def get_api_key():
-    openai_key = ""  # Your OpenAI Key!
+    openai_key = "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"  # Your OpenAI Key!
     return openai_key
 
 def export_to_docx():
