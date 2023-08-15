@@ -20,7 +20,7 @@ class NumberEntry(tk.Entry):
         self.config(validate="key", validatecommand=(vcmd, "%P"))
 
     def validate_input(self, new_text):
-        if new_text == "" or new_text.isdigit() and 5 <= int(new_text) <= 999:
+        if new_text == "" or new_text.isdigit() and 1 <= int(new_text) <= 999:
             return True
         return False
 
@@ -74,7 +74,7 @@ class ChatGPTInterface:
         return response.choices[0].message['content']
 
 def get_api_key():
-    openai_key = "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"  # Your OpenAI Key!
+    openai_key = "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"  # Your OpenAI Key!
     return openai_key
 
 def show_loading_prompt():
@@ -144,11 +144,7 @@ class PrototypeDisclaimer:
 
 # Create GUI window
 root = tk.Tk()
-root.title("ReaderEngineAI - Beta V0.01")
-screen_width = root.winfo_screenwidth()
-screen_height = root.winfo_screenheight()
-x = (screen_width - 300) // 2
-y = (screen_height - 200) // 2
+root.title("QuizEngineAI - Beta V0.01")
 root.iconphoto(True, tk.PhotoImage(file=resource_path('icon.png')))
 original_image = Image.open(resource_path('nscc_sa.png'))
 resized_image = original_image.resize((128, 128))
@@ -165,18 +161,18 @@ project_manager_label = tk.Label(root, text="PRODUCT MANAGER: DAVIS BOUDREAU")
 copyright_label = tk.Label(root, text="© 2023 NSCC - NOVA SCOTIA COMMUNITY COLLEGE")
 logo_image = ImageTk.PhotoImage(resized_image)
 logo_label = tk.Label(root, image=logo_image)
-question_count_label = tk.Label(root, text="Question Count (Min = 5):")
+question_count_label = tk.Label(root, text="Question Count (Min = 1)\n(Default = 5):")
 question_count_entry = NumberEntry(root, textvariable=global_question_count)
 # Layout GUI components
 choose_files_button.pack(pady=10)
+question_count_label.pack(pady=5)
+question_count_entry.pack(pady=5)
 response_text.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
 programmer_label.pack(side="bottom", anchor="se", padx=10)
 project_manager_label.pack(side="bottom", anchor="se", padx=10)
 copyright_label.pack(side="bottom", anchor="se", padx=10, pady=10)
 logo_label.pack(side="bottom", anchor="sw")
-question_count_label.pack(pady=5)
-question_count_entry.pack(pady=5)
+
 
 # GUI Main Loop
-root.geometry("500x600+{}+{}".format(x, y))
 root.mainloop()
