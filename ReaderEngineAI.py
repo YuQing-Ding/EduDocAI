@@ -45,7 +45,7 @@ class ChatGPTInterface:
     def generate_response(self, input_text):
         messages = [
             {"role": "system", "content": "College instructor"},
-            {"role": "user", "content": "Extract course title, analyze teaching objectives, provide detailed lesson planning, offer specific advice to engage students and enhance course learning experience, while ensuring a beginner-friendly teaching difficulty level.\n" + input_text}
+            {"role": "user", "content": "Extract course title, analyze teaching objectives, provide detailed lesson planning, offer specific advice to engage students and enhance course learning experience, while ensuring a beginner-friendly teaching difficulty level.\n" + input_text} # MAGIC LINE, DON'T DELETE IT!
         ]
 
         response = openai.ChatCompletion.create(
