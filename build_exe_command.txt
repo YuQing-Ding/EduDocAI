@@ -1,0 +1,2 @@
+pyinstaller --onefile --add-data "x:\Users\YOUR_USERNAME\Desktop\Project_ReaderEngine\icon.png;." --add-data
+ "x:\Users\YOUR_USERNAME\Desktop\Project_ReaderEngine\nscc_sa.png;." -w -i icon.ico  ReaderEngineAI.py
